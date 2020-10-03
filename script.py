@@ -1,6 +1,6 @@
 import paramiko
 import time
-f = open("credentials", "r")
+f = open("ruckus-creds", "r")
 password = (f.read())
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
