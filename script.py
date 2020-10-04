@@ -1,6 +1,7 @@
 import paramiko
 import time
-f = open("ruckus-creds", "r")
+import os
+f = open("./ruckus-creds", "r")
 password = (f.read())
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -11,10 +12,10 @@ channel.invoke_shell()
 
 while channel.recv_ready():
     channel.recv(1024)
-
-print(password)
+time.sleep(1)
 channel.sendall("admin\n")
 channel.sendall(password + "\n")
 time.sleep(1)
-channel.sendall("set interface eth1 type access untag 150\n")
+channel.sendall("set interface eth1 type access untag 35\n")
+time.sleep(1)
 print(channel.recv(1024))
