@@ -1,6 +1,6 @@
 import paramiko
 import re
-
+import time
 
 class ShellHandler:
 
@@ -66,7 +66,5 @@ class ShellHandler:
         return shin, shout, sherr
 
 Ruckus = ShellHandler("10.0.80.4", "", "")
-Ruckus.execute()
 Ruckus.execute('admin')
-Ruckus.execute('set interface eth1 type access untag 35')
 Ruckus.__del__()
